@@ -25,5 +25,6 @@ func main() {
 	}
 	fmt.Println("cart values are %v", c.getCart())
 	d := *c
+	d.Id = 15
 	fmt.Println("cart values are %v", d.getCartByReference())
 }

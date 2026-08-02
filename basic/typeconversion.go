@@ -12,6 +12,6 @@ func main() {
 	fmt.Println("fmt.Printf(\"variable var1 has value %d in 32-bit integer, %f in float, %b in binary, %s in string, %U in unicode, %x in hexa-decimal\", var1, var1, var1, var1, var1, var1)")
 	fmt.Println("fmt.Printf(\"variable var2 has value %d in 64-bit integer, %f in float, %b in binary, %s in string, %U in unicode, %x in hexa-decimal\", var2, var2, var2, var2, var2, var2)")
 
-	fmt.Printf("variable var1 has value %d in 32-bit integer, %f in float, %b in binary, %s in string, %U in unicode, %x in hexa-decimal\n", var1, var1, var1, var1, var1, var1)
-	fmt.Printf("variable var2 has value %d in 64-bit integer, %f in float, %b in binary, %s in string, %U in unicode, %x in hexa-decimal\n", var2, var2, var2, var2, var2, var2)
+	fmt.Printf("variable var1 has value %d in 32-bit integer, %f in float, %b in binary, %s in string, %U in unicode, %x in hexa-decimal, %q\n", var1, var1, var1, var1, var1, var1, var1)
+	fmt.Printf("variable var2 has value %d in 64-bit integer, %f in float, %b in binary, %s in string, %U in unicode, %x in hexa-decimal, %q\n", var2, var2, var2, var2, var2, var2, var2)
 }

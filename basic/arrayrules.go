@@ -7,13 +7,13 @@ func main() {
 	var arr [3]uint8
 	var roomnumbers [7]uint8
 	arr1 := [4]int{12, 14, 15, 17}
-	arr3 := [...]string{"Golang", "is", "great"}
+	arr3 := [...]string{"Golang", "is", "great", "and", "Zig", "is", "better"}
 
 	fmt.Println("Syntax:")
 	fmt.Println("var arr [3]uint8")
 	fmt.Println("var roomnumbers [7]uint8")
 	fmt.Println("arr1 := [4]int{12,14,15,17}")
-	fmt.Println("arr3 := [...]string{\"Golang\", \"is\", \"great\"}")
+	fmt.Println("arr3 := [...]string{\"Golang\", \"is\", \"great\", \"and\", \"Zig\", \"is\", \"better\"}")
 
 	for index, value := range arr1 {
 		fmt.Println(index, value)

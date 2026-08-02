@@ -25,8 +25,8 @@ func viewSignedInteger() {
 
 func viewFloatingPoint() {
 	fmt.Println("Syntax:")
-	fmt.Println("var variable1 fixed32")
-	fmt.Println("var variable2 fixed64")
+	fmt.Println("var variable1 float32")
+	fmt.Println("var variable2 float64")
 	fmt.Println("fmt.Scan(\"%f\", &variable2)")
 	fmt.Println("fmt.Printf(\"%f\", variable2)")
 }
@@ -58,6 +58,8 @@ func viewString() {
 func main() {
 	fmt.Println("This is the basic of go langauage")
 	var idx int32 = 0
+	var fvar float32 = 14.27
+	fmt.Println("float variable =", fvar)
 	for idx != -1 {
 		fmt.Println("1. unsigned integer")
 		fmt.Println("2. signed integer")
