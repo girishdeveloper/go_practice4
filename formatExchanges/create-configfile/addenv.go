@@ -14,5 +14,5 @@ func main() {
 		os.Setenv("APP_PORT", myvar2)
 	}
 	fmt.Println("Namespace is ", myvar)
-	fmt.Println("APP_PORT =", myvar2)
+	fmt.Println("APP_PORT =", os.Getenv("APP_PORT"))
 }

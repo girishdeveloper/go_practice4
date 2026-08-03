@@ -69,7 +69,7 @@ CONFIGNAME:
 	if len(configfile) == 0 {
 		goto CONFIGNAME
 	}
-	fileHandler, err := os.OpenFile("./output/"+configfile+".json", os.O_RDWR|os.O_CREATE, 0766)
+	fileHandler, err := os.OpenFile("./output/"+configfile+".json", os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0766)
 	if err != nil {
 		panic(err)
 	}
@@ -77,10 +77,10 @@ CONFIGNAME:
 	if err != nil {
 		panic(err)
 	}
-	err = fileHandler.Truncate(0)
+	/*err = fileHandler.Truncate(0)
 	if err != nil {
 		panic(err)
-	}
+	}*/
 	err = json.Unmarshal(existingConf, &configuration)
 	fmt.Print("Enter server host:")
 	fmt.Scanf("%s", &serverHost)
