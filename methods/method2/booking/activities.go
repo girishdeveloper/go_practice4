@@ -4,6 +4,7 @@ import (
 	"Hotel/pricing"
 	"Hotel/room"
 	"fmt"
+	"slices"
 	"strings"
 	"time"
 )
@@ -70,5 +71,13 @@ func (b *Book) ShowBookings() {
 		fmt.Printf("Room type: %s \t Payable amount: %0.2f\n", rm.RoomTypeString(v.RoomType), amount)
 		fmt.Printf("Booked on: %v \t Guest will arrive on: %v\n", v.BookedOn.Format(time.DateTime), v.GuestArrivalOn.Format(time.DateTime))
 		fmt.Println(strings.Repeat("**", 15))
+	}
+}
+
+func (b *Book) CancelBooking(index int) {
+	if len(b.Orders) >= 1 && len(b.Orders) > index {
+		b.Orders = slices.Delete(b.Orders, index, 1)
+	} else {
+		fmt.Println("No bookings found for deletion")
 	}
 }
