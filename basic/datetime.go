@@ -11,7 +11,7 @@ func main() {
 	fmt.Println(strings.Repeat("#", 13))
 	location, _ := time.LoadLocation("Asia/Kolkata")
 	var start = time.Now()
-	time.Sleep(time.Second * 15)
+	//time.Sleep(time.Second * 15)
 	wokeUp := time.Now()
 	futureTime := time.Now().Add((10 * time.Second))
 	fmt.Println("Started at", start.Format(time.DateTime))
@@ -34,4 +34,9 @@ func main() {
 	year1, month1, day1 := anyDate.Date()
 	fmt.Printf("extract date elements: %d %d, %d\n", year1, month1, day1)
 	fmt.Printf("Epoch time is %d\n", time.Now().Unix())
+	// dates
+	fmt.Println(time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day()+1, 0, 0, 0, 0, location))
+
+	fmt.Println(time.Now().AddDate(time.Now().Year(), int(time.Now().Month())+3, time.Now().Day()+3))
+	fmt.Println(time.Date(time.Now().Year(), time.Now().Month()+3, time.Now().Day()+3, 0, 0, 0, 0, location))
 }

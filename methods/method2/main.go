@@ -98,10 +98,14 @@ func main() {
 			log.Println("Guest detail added.")
 			break
 		case float32(3.2):
-			b.Book(booking.AdvanceBooking, 10, 10, 1, 2, room.Dormitory, prs.GetPayRate(0), time.Now(), time.Date(time.Now().Year(), time.Now().Month()+3, time.Now().Day()+3, 0, 0, 0, 0, room.Location))
+			after3Months3Days := time.Date(time.Now().Year(), time.Now().Month()+3, time.Now().Day()+3, 0, 0, 0, 0, room.Location)
+			b.Book(booking.AdvanceBooking, 10, 10, 1, 2, room.Dormitory, prs.GetPayRate(0), time.Now(), after3Months3Days)
+			//just now
 			b.Book(booking.SpotBooking, 3, 3, 2, 2, room.DoubleOccupancy, prs.GetPayRate(1), time.Now(), time.Now())
-			b.Book(booking.BulkBooking, 30, 15, 30, 2, room.ResidentialSuite, prs.GetPayRate(2), time.Now(), time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day()+3, 0, 0, 0, 0, room.Location))
-			b.Book(booking.PartyBooking, 5, 4, 1, 5, room.PresidentialSuite, prs.GetPayRate(3), time.Now(), time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day()+13, 0, 0, 0, 0, room.Location))
+			after3Days := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day()+3, 0, 0, 0, 0, room.Location)
+			b.Book(booking.BulkBooking, 30, 15, 30, 2, room.ResidentialSuite, prs.GetPayRate(2), time.Now(), after3Days)
+			after13Days := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day()+13, 0, 0, 0, 0, room.Location)
+			b.Book(booking.PartyBooking, 5, 4, 1, 5, room.PresidentialSuite, prs.GetPayRate(3), time.Now(), after13Days)
 			b.ShowBookings()
 			break
 		case float32(3.3):
