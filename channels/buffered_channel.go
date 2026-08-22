@@ -10,11 +10,17 @@ func main() {
 	go chanOks(ch)
 	log.Println("waiting for communication...")
 	ch <- 56
+	log.Println("received now 01")
 	ch <- 69
+	log.Println("received now 02")
 	ch <- 73
+	log.Println("received now 03")
 	ch <- 87
+	log.Println("received now 04")
 	ch <- 77
+	log.Println("received now 05")
 	ch <- 98
+	log.Println("received now 06")
 	close(ch)
 }
 
@@ -25,7 +31,7 @@ func chanOks(ch chan int) {
 		log.Println("channel value is not ok")
 	}*/
 	for val := range ch {
-		fmt.Println("value=", val)
+		log.Println("value=", val)
 	}
 	fmt.Println("go routine end")
 }
