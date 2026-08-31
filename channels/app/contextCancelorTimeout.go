@@ -99,6 +99,7 @@ func main() {
 		wg.Add(1)
 		go StudentWorker(ctx, w, studentChan, resultChan, &wg)
 	}
+	//time.Sleep(10 * time.Second)
 	go func() {
 		for _, s := range students {
 			studentChan <- s
