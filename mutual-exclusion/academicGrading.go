@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -122,7 +123,7 @@ func ProcessWorker(ctx context.Context, w int, studChan <-chan Student, resultCh
 			} else if stuDetail.Percentage < 0.0 && stuDetail.Percentage > 100.00 {
 				err = &ValidateError{Field: "Percentage", Message: "invalid percentage"}
 			} else if stuDetail.Percentage >= 0.0 && stuDetail.Percentage < 35.00 {
-				err = &ValidateError{Field: "Percentage", Message: "Student with Id" + string(stuDetail.Id) + " failed"}
+				err = &ValidateError{Field: "Percentage", Message: "Student with Id" + strconv.FormatInt(int64(stuDetail.Id), 10) + " failed"}
 			}
 			if err != nil {
 				errMessage := fmt.Errorf("worker %d failed to process student with Id %d\n", w, stuDetail.Id)
