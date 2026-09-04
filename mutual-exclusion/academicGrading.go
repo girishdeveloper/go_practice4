@@ -46,6 +46,12 @@ func (st *Student) GetStudents(stud []Student, location *time.Location) []Studen
 		DoB:        time.Date(1982, time.April, 13, 01, 20, 0, 0, location),
 		CourseId:   1,
 		Percentage: 78.09,
+	}, Student{
+		Id:         2,
+		Name:       "Koresh",
+		DoB:        time.Date(1982, time.October, 03, 01, 20, 0, 0, location),
+		CourseId:   1,
+		Percentage: 34.50,
 	})
 	return stud
 }
@@ -91,7 +97,7 @@ func (rstat *ResultStats) GenerateReport() string {
 	reportString += fmt.Sprintf("\tTotal Students: %d\n", rstat.SuccessCount+rstat.FailureCount)
 	reportString += fmt.Sprintf("\tTotal Passed: %d\n", rstat.SuccessCount)
 	reportString += fmt.Sprintf("\tTotal Failed: %d\n", rstat.FailureCount)
-	reportString += fmt.Sprintf("\tPass Percentage: %3.2f\n", float64(rstat.SuccessCount/(rstat.SuccessCount+rstat.FailureCount))*100.00)
+	reportString += fmt.Sprintf("\tPass Percentage: %3.2f\n", (float32(rstat.SuccessCount)/float32(rstat.SuccessCount+rstat.FailureCount))*100.00)
 	return reportString
 }
 
@@ -115,6 +121,8 @@ func ProcessWorker(ctx context.Context, w int, studChan <-chan Student, resultCh
 				err = &ValidateError{Field: "Name", Message: "empty name given"}
 			} else if stuDetail.Percentage < 0.0 && stuDetail.Percentage > 100.00 {
 				err = &ValidateError{Field: "Percentage", Message: "invalid percentage"}
+			} else if stuDetail.Percentage >= 0.0 && stuDetail.Percentage < 35.00 {
+				err = &ValidateError{Field: "Percentage", Message: "Student with Id" + string(stuDetail.Id) + " failed"}
 			}
 			if err != nil {
 				errMessage := fmt.Errorf("worker %d failed to process student with Id %d\n", w, stuDetail.Id)
