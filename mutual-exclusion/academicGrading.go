@@ -82,6 +82,23 @@ func (stats *ResultStats) RecordFailure() {
 	stats.FailureCount++
 }
 
+type Reportable interface {
+	GenerateReport() string
+}
+
+func (rstat *ResultStats) GenerateReport() string {
+	reportString := "\t\t\tStudent results\n"
+	reportString += fmt.Sprintf("\tTotal Students: %d\n", rstat.SuccessCount+rstat.FailureCount)
+	reportString += fmt.Sprintf("\tTotal Passed: %d\n", rstat.SuccessCount)
+	reportString += fmt.Sprintf("\tTotal Failed: %d\n", rstat.FailureCount)
+	reportString += fmt.Sprintf("\tPass Percentage: %3.2f\n", float64(rstat.SuccessCount/(rstat.SuccessCount+rstat.FailureCount))*100.00)
+	return reportString
+}
+
+func PrintReport(r Reportable) {
+	fmt.Println(r.GenerateReport())
+}
+
 func ProcessWorker(ctx context.Context, w int, studChan <-chan Student, resultChan chan<- Result, stats *ResultStats, wg *sync.WaitGroup) {
 	defer wg.Done()
 	for {
@@ -158,5 +175,9 @@ func main() {
 			fmt.Printf("Student Id %d processed successfully\n", rs.StudentId)
 		}
 	} // end of resultChan
-	// TODO: generate report
+	//generate report
+	var reports = []Reportable{&results}
+	for _, report := range reports {
+		PrintReport(report)
+	}
 }
